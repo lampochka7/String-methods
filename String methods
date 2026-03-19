@@ -1,0 +1,91 @@
+// 1. Базовый срез
+let str = "JavaScript";
+console.log(str.slice(4)); // "Script"
+
+// 2. Проверка начала и конца
+str = "report.pdf";
+console.log(str.startsWith("rep")); // true
+console.log(str.endsWith(".pdf")); // true
+
+// 3. Замена в строке
+str = "I like cats";
+console.log(str.replace("cats", "dogs"));
+
+// 4. Подсчёт слов
+str = "apple,banana,orange,apple";
+let words = str.split(",");
+let appleCount = words.filter(w => w === "apple").length;
+console.log(appleCount);
+
+// 5. Фильтр по слову
+str = "My phone number is 12345 and my code is 67890";
+let numbers = str.match(/\d+/g);
+console.log(numbers);
+
+// 6. Первое слово в нижний регистр
+str = "Hello World From JS";
+let wordsArr = str.split(" ");
+wordsArr[0] = wordsArr[0].toLowerCase();
+console.log(wordsArr.join(" "));
+
+// 7. Цензура
+str = "JavaScript is a cool language";
+console.log(str.replace("cool", "****"));
+
+// 8. Проверка наличия подстроки
+str = "user@example.com";
+console.log(str.includes("@") && str.includes(".") ? "Email valid" : "Invalid");
+
+// 9. Аббревиатура
+function getAbbreviation(str) {
+    return str.split(" ").map(word => word[0].toUpperCase()).join("");
+}
+console.log(getAbbreviation("Java Script Object Notation"));
+
+// 10. Самое длинное слово
+str = "I love learning JavaScript programming";
+let longest = str.split(" ").reduce((a, b) => a.length >= b.length ? a : b);
+console.log(longest);
+
+// 11. Достать домен из email
+str = "user@example.com";
+console.log(str.split("@")[1]);
+
+// 12. Достать имя файла без расширения
+str = "archive.backup.zip";
+console.log(str.substring(0, str.lastIndexOf(".")));
+
+// 13. Заменить ВСЕ пробелы на подчёркивания
+str = "make this a slug line";
+console.log(str.replaceAll(" ", "_"));
+
+// 14. Скрыть середину номера телефона
+str = "+7 (999) 123-45-67";
+console.log(str.replace(/\([^)]+\)\s(\d{3})/, "(***) ***"));
+
+// 15. Проверка, что строка — ".js" файл
+str = "main.test.js";
+console.log(str.slice(str.lastIndexOf(".") + 1) === "js" ? "JS file" : "Other");
+
+// 16. Удалить лишние пробелы между словами
+str = "  I  love   JS  ";
+console.log(str.trim().replace(/\s+/g, " "));
+
+// 17. Поменять местами части даты
+str = "2026-02-06";
+let [year, month, day] = str.split("-");
+console.log(`${day}.${month}.${year}`);
+
+// 18. Сделать “Капитализацию” каждого слова
+str = "hELLo woRLD fRoM js";
+let capitalized = str.toLowerCase().split(" ").map(w => w[0].toUpperCase() + w.slice(1)).join(" ");
+console.log(capitalized);
+
+// 19. Найти слово после #
+str = "Read more #JavaScript today";
+let match = str.match(/#(\w+)/);
+console.log(match ? match[1] : null);
+
+// 20. Заменить слово только если оно отдельное
+str = "cat scatter catapult cat";
+console.log(str.replace(/\bcat\b/g, "dog"));
